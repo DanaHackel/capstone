@@ -1,0 +1,26 @@
+Field Title,Field Name,Data Type,Description
+Manufacturer Name,Manufacturer,Plain Text,The entity that 1) holds the NDC for a prescription drug; and 2) Is described in Health and Safety Code Section 127675.
+NDC Number,NDC,Plain Text,"A three-segment code maintained by the federal Food and Drug Administration that includes a labeler code, a product code, and a package code for a drug product and that has been converted to an 11-digit format consisting of five digits in the first segment, four digits in the second segment, and two digits in the third segment."
+Drug Product Description,Drug Product Description,Plain Text,"A description of the drug product which includes the drug product name, strength, dosage form, and package size."
+WAC Effective Date,WAC Effective Date,Date,The effective date of the wholesale acquisition cost increase for the drug product.
+WAC Increase Amount,WAC Increase Amount,Number,Amount of wholesale acquisition cost increase for the drug product.
+WAC After Increase,WAC After Increase,Number,The wholesale acquisition cost resulting from the reported cost increase for the drug product.
+Patent Expiration Date,Patent Expiration Date,Date,The date when all patents on a drug will expire.
+Drug Source Type,Drug Source Type,Plain Text,Indicates whether the drug product is one of the following as defined in subparagraph (A) of paragraph (7) of subdivision (k) of Section 1396r-8 of Title 42 of the United States Code: (A) an innovator multiple source drug; (B) a noninnovator multiple source drug; or (C) a single source drug.
+Unit Sales Volume in US,Unit Sales Volume in US,Number,Number of units of the drug product sold in the United States during the one year period prior to the effective date of the cost increase.
+Unit Sales Volume Non-Public Indicator,Unit Sales Vol Non-Pub Ind,Number,A manufacturer may limit the information reported to that which is otherwise in the public domain or publicly available. An indicator of 1 means that the information is not in the public domain or publicaly available.
+Cost Increase Factors,Cost Increase Factors,Plain Text,A narrative description of the specific financial and nonfinancial factors used to make the decision to increase the wholesale acquisitions cost of the drug product and to decide on the amount of the increase.
+Cost Increase Factors Non-Public Indicator,Cost Inc Factors Non-Pub Ind,Number,A manufacturer may limit the information reported to that which is otherwise in the public domain or publicly available. An indicator of 1 means that the information is not in the public domain or publicaly available.
+Change/Improvement Description,Change/Improvement Description,Plain Text,A narrative description of the change or improvement in the drug product that necessitates the price increase.
+Change/Improvement Description Non-Public Indicator,Chg/Imp Desc Non-Pub Ind,Number,A manufacturer may limit the information reported to that which is otherwise in the public domain or publicly available. An indicator of 1 means that the information is not in the public domain or publicaly available.
+Acquisition Date,Acquisition Date,Date,"If the drug product was acquired by the manufacturer within the previous five years, the date of that acquisition."
+Company Acquired From,Company Acquired From,Plain Text,"If the drug product was acquired by the manufacturer within the previous five years, the name of the company from which the drug was acquired."
+Acquisition Price,Acquisition Price,Number,"If the drug product was acquired by the manufacturer within the previous five years, the purchase price of acquisition."
+Acquisition Price Non-Public Indicator,Acquisition Price Non-Pub Ind,Plain Text,A manufacturer may limit the information reported to that which is otherwise in the public domain or publicly available. An indicator of 1 means that the information is not in the public domain or publicaly available.
+Acquisition Price Comment,Acquisition Price Comment,Plain Text,"Manufacturer appended comments regarding the acquisition purchase price, if reported."
+WAC at Acquisition,WAC at Acquisition,Number,"If the drug product was acquired by the manufacturer within the previous five years, the wholesale acquisition cost of the drug product at the time of acquisition."
+WAC Amount - Year Prior,WAC Amount - Year Prior,Number,"If the drug product was acquired by the manufacturer within the previous five years, the wholesale acquisition cost of the drug product one year prior to the date of acquisition."
+Year Drug Introduced to Market,Year Drug Introduced to Market,Plain Text,"If the drug product was acquired by the manufacturer within the previous five years, the year the drug product was introduced to market."
+WAC at Introduction,WAC at Intro to Market,Number,"If the drug product was acquired by the manufacturer within the previous five years, the wholesale acquisition cost of the drug product at the time it was introduced to market date."
+Supporting Documents,Supporting Documents,Attachment,A document submitted by the manufacturer to support reported WAC Increase information for a prescription drug product
+General Comments,General Comments,Plain Text,"Manufacturer appended comments, if reported."
