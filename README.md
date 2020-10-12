@@ -2,7 +2,7 @@
 Dana Hackel, General Assembly DSI Capstone Project
 ## Problem Statement
 The price of many drugs, both prescription (Rx) and over the counter (OTC) can often be very expensive.
-Having a way to predict price can help pharmaceutical companies determine price for newly approve drugs and can help compnaies compare their current
+Having a way to predict price can help pharmaceutical companies determine price for newly approve drugs and can help companies compare their current
 price to similar drugs to determine if they are priced competitively. I will use the National Average Drug Acquisition cost data to build a regression model
 that predicts drug price values and I will also create an interactive visual to explore factors related to drug price.
 
@@ -49,14 +49,14 @@ I decided to use Root Mean Squared Error (RMSE) to assess my error as that is th
 This part is still a work in progress. I was able to predict test data for two drugs, however the predictions were not great. There are multiple data entries per drug per date because there are
 multiple equivalent therapeutics for each 'NDC Description'. In order to perform a timeseries analysis, I needed to average the price for each entry date, and this left me with only 8 data points, which was not enough to predict.
 
-!(/images/predicting_price.jpg)
+!(./images/predicting_price.jpg)
 
 
 Timeseries analysis is something I want to do in the future, but I either need more data points, or to find a different data set to do so.
 
 ## Creating an Interactive Visual Dashboard on Tableau
 
-Please view the the interactive dashboard [here](https://public.tableau.com/shared/BMZC4F56D?:display_count=y&:origin=viz_share_link). Hovering over various data points will provide more information.
+Please view the the interactive dashboard [here](https://public.tableau.com/profile/dana.hackel#!/vizhome/DrugPriceDashboardwithNADACData/DrugPriceDashboardwithNADACData?publish=yes). Hovering over various data points will provide more information.
 
 ## Future Directions/ To-Do before the End:
 Immediate Actions:
@@ -76,7 +76,6 @@ Other Fun Projects:
 distances between DNA strands of multiple species, or DNA strands of multiple people to measure how closely related they are.
 </ul>
 
-## Data Directory
 
 ## Sources
  [Github of a similar project](https://github.com/alofgran/Drug-Price-Prediction)  
