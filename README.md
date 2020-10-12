@@ -4,7 +4,7 @@ Dana Hackel, General Assembly DSI Capstone Project
 The price of many drugs, both prescription (Rx) and over the counter (OTC) can often be very expensive.
 Having a way to predict price can help pharmaceutical companies determine price for newly approve drugs and can help compnaies compare their current
 price to similar drugs to determine if they are priced competitively. I will use the National Average Drug Acquisition cost data to build a regression model
-(as of check-in 4, my best model is K Nearest Neighbors, but that may change) that predicts drug price values.
+that predicts drug price values and I will also create an interactive visual to explore factors related to drug price.
 
 ## Data Collection
 My data was downloaded from the following sources:
@@ -23,56 +23,65 @@ drug name and some other features such as phamacological type (i.e. analgesic/ p
 some of the NDC's in the NADAC dataset were missing part of the code. So, I planned to use a library called Fuzzywuzzy to match the NDCs in the two datasets.
 The Fuzzywuzzy library uses Levenshtein distance to determine strings which are similar based on a score (in my case, 85% similarity). While trying to match NDC numbers, I quickly learned that
 this would not work as planned. If one number was slightly out of order, it would match drugs with slightly different NDCs that were not similar at all (i.e. an antacid was matched
-with hand-sanitizer). In order to circumvent this problem, I decided to use the Orange Book data instead, which included the drug's active ingredient, strength, and dose route. I was able to
+with hand-sanitizer). After more research, I realized this was because Levenshtein distance is the number of characters added, deleted, or subsistuted between two strings. In order to circumvent this problem, I decided to use the Orange Book data instead, which included the drug's active ingredient, strength, and dose route. I was able to
 match this to a column containing the same information in the NADAC dataset.
 
 Before combining the two datasets, I also cleaned the NADAC data. I removed duplicate drug entries, keeping the most recent 'As of' date. This dataset is updated frequently, as the price of drugs
 can change frequently, but I want my model to predict price off of the most current information.
 
+I decided to remove one outlier which had the price per unit of almost $900. This was well above the average and more than 1.5 standard deviations away from the mean. After removing the outlier, the average price per unit was $1.52 with a range between $0.0007 - $346.90 per unit and a standard deviation of $12.13.
+
 ## Predictive Models
-I ran the following models with my drug price data and determined ___ was the best model.
-(Best model is currently KNN because it has the highest accuracy, least variance, and lowest RMSE score)
+I ran the following models with my drug price data and determined Support Vector Regressor was the best model, with a K Nearest Neighbor regressor as a close second.
 
 I decided to use Root Mean Squared Error (RMSE) to assess my error as that is the average error, in dollars, from each model.
 
 | Model | Train Score | Test Score | Test RMSE ($) | Comments |
 |-------|-------------|------------|---------------|----------|
-|Linear Regression| 0.926903481896789 | -6.147243174148271e+18 | 33619121272.395153 | This had an embarassingly high variance and error (probably way too many features)|
-|K Nearest Neighbors| 0.8915498524974116 | 0.8080358209686297 | 5.940954948304041 | This had a much better accuracy score and much less variance. The model is still, on average $5.94 off on price prediction, which is still relatively high since many of the drugs have an acquisition cost below $1.00|
-|Random Forest| 0.87318737377666 | 0.7989923850483017 | 6.0792837755132805 | Slightly lower accuracy, and slightly higher variance/ error.  |
-|Voting Classifier| Currently running with Adaboost, Gradient Descent, and Random Forest| - | - |
-|Support Vector Machine| Next on the list | - | - |
+|Linear Regression| 93%| -6.147243174148271e+18% | $33,619,121,272.40 | This had an embarrassingly high variance and error (probably way too many features)|
+|K Nearest Neighbors| 92.3% | 89.3% | $4.25 | This had a much better R2 score and much less variance. The model is still, on average $4.25 off on price prediction, which is still relatively high since the average acquisition cost is $1.52|
+|Random Forest| 87.3% |79.8% | $6.09 | Slightly lower R2, and slightly higher variance/ error.  |
+|AdaBoost Regressor| 67.6% | 64.6% | $8.07 | This was not better than KNN or SVR so I will not gridsearch |
+|Support Vector Machine| 91.2% | 89.3% | $4.25 | This was slightly better than KNN because the variation between train and test was slightly less. |
 
 ## Drug Prices Over Time
 
-This part is still a work in progress. I have one graph made on Tableau and am working on the second (for brand name drugs, which requires saving a second csv to filter out the generics - this should be up tonight but I am completing the readme first)
-I previously made two timeseries graphs during my original EDA, but they have changed slightly as the most mentioned drugs has changed once I combined my dataframes.
-Old images can be seen in the eda_nadac notebook.
+This part is still a work in progress. I was able to predict test data for two drugs, however the predictions were not great. There are multiple data entries per drug per date because there are
+multiple equivalent therapeutics for each 'NDC Description'. In order to perform a timeseries analysis, I needed to average the price for each entry date, and this left me with only 8 data points, which was not enough to predict.
+
+!(/images/predicting_price.jpg)
+
+
+Timeseries analysis is something I want to do in the future, but I either need more data points, or to find a different data set to do so.
 
 ## Creating an Interactive Visual Dashboard on Tableau
 
-Please view the current dashboard [here](https://public.tableau.com/shared/BMZC4F56D?:display_count=y&:origin=viz_share_link).
-This is also still a work in progress.
+Please view the the interactive dashboard [here](https://public.tableau.com/shared/BMZC4F56D?:display_count=y&:origin=viz_share_link). Hovering over various data points will provide more information.
 
 ## Future Directions/ To-Do before the End:
-Things to continue after check in 4 (this will be changed for the final submission):
-<ol>
-<li> Run Grid-Search with best performing model (right now thats KNN) to try to lower variance and/or increase accuracy score
-<li> Complete visuals for Tableau
-<li> More timeseries analysis
+Immediate Actions:
+<ul>
+<li>More drug prices
+<li>Updated prices weekly in NADAC data
+<li>Reduce variation and RMSE
+</ul>
+Near Future:
+<ul>
+<li>Refine data even more - timeseries
+<li>Predicting ingredient - cluster categorical predictions
+</ul>
+Other Fun Projects:
+<ul>
+<li>Fuzzywuzzy and DNA matching - Fuzzywuzzy meausres string distance bassed on the number of characters inserted, substituted, or deleted so I think it would be interesting to measure
+distances between DNA strands of multiple species, or DNA strands of multiple people to measure how closely related they are.
+</ul>
 
-- Look for seasonality and patterns
-- Assess stationarity in some drugs?
-- Predict future prices of drugs?
-
-<li> Add Brand name info to timeseries (requires a separate csv of just brandname drugs)
-</ol>
-
-General Next Steps: (for now)
-<ol>
-<li> Continue to add/remove parameters to improve accuracy score and lower variation
-<li> Find more data to add!
-</ol>
+## Data Directory
 
 ## Sources
- [Github of a similar project](https://github.com/alofgran/Drug-Price-Prediction)
+ [Github of a similar project](https://github.com/alofgran/Drug-Price-Prediction)  
+[NADAC Data](https://data.medicaid.gov/Drug-Pricing-and-Payment/NADAC-National-Average-Drug-Acquisition-Cost-/a4y5-998d)  
+[Orange Book Data](https://www.fda.gov/drugs/drug-approvals-and-databases/orange-book-data-files)  
+[FuzzyWuzzy](https://github.com/seatgeek/fuzzywuzzy)   
+General Assembly DSI Lessons  
+Tableau Public
