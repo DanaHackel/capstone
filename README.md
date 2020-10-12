@@ -47,9 +47,9 @@ I decided to use Root Mean Squared Error (RMSE) to assess my error as that is th
 ## Drug Prices Over Time
 
 This part is still a work in progress. I was able to predict test data for two drugs, however the predictions were not great. There are multiple data entries per drug per date because there are
-multiple equivalent therapeutics for each 'NDC Description'. In order to perform a timeseries analysis, I needed to average the price for each entry date, and this left me with only 8 data points, which was not enough to predict.
+multiple equivalent therapeutics for each 'NDC Description'. In order to perform a timeseries analysis, I needed to average the price for each entry date, and this left me with only 8 data points, which was not enough to predict. In the image below, the green line is predicted price while the yellow is actual price.
 
-!(./images/predicting_price.jpg)
+![Timeseries Prediction Attempt](./images/predicting_price.jpg)
 
 
 Timeseries analysis is something I want to do in the future, but I either need more data points, or to find a different data set to do so.
